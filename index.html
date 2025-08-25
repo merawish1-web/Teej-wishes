@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <title>तीज की शुभकामनाएं</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan&display=swap');
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background: #fff7ef;
+      font-family: 'Baloo Bhaijaan', Arial, sans-serif;
+    }
+    .container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .greeting-box {
+      width: 95vw;
+      max-width: 520px;
+      background: #ffe8df;
+      border-radius: 24px;
+      box-shadow: 0 4px 24px #dfc8b7;
+      text-align: center;
+      padding: 40px 10px 36px 10px;
+      position: relative;
+      z-index: 5;
+      margin: 2vw auto;
+    }
+    .main-img {
+      width: 100%;
+      max-width: 410px;
+      border-radius: 14px;
+      border: 3px solid #ffa849;
+      margin-bottom: 20px;
+      margin-top: 10px;
+      box-shadow: 0 2px 10px #ebb64260;
+    }
+    .wish {
+      font-size: 1.25rem;
+      color: #e67817;
+      margin-bottom: 15px;
+      font-weight: bold;
+      line-height: 1.7;
+    }
+    .footer {
+      font-size: 1.1rem;
+      color: #007b44;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .input-section {
+      margin: 30px 0 13px 0;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+    input[type="text"] {
+      font-size: 1rem;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 2px solid #ffd5b1;
+      outline: none;
+      width: 160px;
+    }
+    button {
+      padding: 9px 15px;
+      font-size: 1rem;
+      border-radius: 9px;
+      background: #f2709c;
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background: #fa709a;
+    }
+    #shareLinkBox {
+      margin-top: 14px;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    #shareLink {
+      background: #fffae5;
+      color: #c84e1f;
+      padding: 7px 14px;
+      font-size: 1rem;
+      border-radius: 7px;
+      word-break: break-all;
+    }
+    #whatsappBtn {
+      margin-top: 7px;
+      background: #25D366;
+      color: #fff;
+      font-size: 17px;
+      padding: 8px 25px;
+      border-radius: 24px;
+      font-weight: 600;
+    }
+    /* Flower rain style */
+    .flower {
+      position: fixed;
+      pointer-events: none;
+      z-index: 20;
+      width: 33px;
+      opacity: 0.83;
+      animation-name: fall;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+    @keyframes fall {
+      to {
+        transform: translateY(95vh) rotate(140deg);
+        opacity: 0.6;
+      }
+    }
+    @media (max-width: 700px) {
+      .greeting-box { max-width: 98vw; padding: 16px 2vw;}
+      .main-img { max-width:90vw;}
+    }
+  </style>
+</head>
+<body>
+  <div id="flowerContainer"></div>
+  <div class="container">
+    <div class="greeting-box">
+      <h2>हरियाली तीज की हार्दिक शुभकामनाएं!</h2>
+      <img class="main-img" src="image19.jpg" alt="तीज त्योहार">
+      <div id="greetingText" class="wish">
+        तीज का त्यौहार आया है खुशियों की सौगात लाया है,<br>
+        पति-पत्नी के रिश्ते में और भी गहराई लाया है।
+      </div>
+      <div class="footer">
+        आपको और आपके परिवार को तीज की शुभकामनाएं!
+      </div>
+      <div class="input-section">
+        <input type="text" id="nameInput" placeholder="अपना नाम लिखें" maxlength="25">
+        <button onclick="generateLink()">लिंक बनाएँ</button>
+      </div>
+      <div id="shareLinkBox">
+        <div> 👉 लिंक तैयार है:</div>
+        <a id="shareLink" target="_blank"></a>
+        <button id="whatsappBtn" onclick="shareOnWhatsapp()">WhatsApp पर भेजें</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Flowers rain
+    function createFlower() {
+      const flowers = ["🌸","🌺","🌼","🌹","🥀"];
+      const container = document.getElementById("flowerContainer");
+      const flower = document.createElement("div");
+      flower.className = "flower";
+      flower.style.left = Math.random()*97 + "vw";
+      flower.style.top = "-35px";
+      flower.style.fontSize = (25 + Math.random()*13) + "px";
+      flower.style.animationDuration = (5 + Math.random()*4) + "s";
+      flower.innerText = flowers[Math.floor(Math.random()*flowers.length)];
+      container.appendChild(flower);
+      setTimeout(() => flower.remove(), 9000);
+    }
+    setInterval(createFlower, 330);
+
+    // Name link generator
+    function generateLink() {
+      let name = document.getElementById("nameInput").value.trim();
+      let wish;
+      if(name){
+        wish = `प्रिय ${name} जी,\nतीज का त्यौहार आया है खुशियों की सौगात लाया है,\nपति-पत्नी के रिश्ते में और भी गहराई लाया है।\n\nआपको और आपके परिवार को तीज की शुभकामनाएं!`;
+      } else {
+        wish = `तीज का त्यौहार आया है खुशियों की सौगात लाया है,\nपति-पत्नी के रिश्ते में और भी गहराई लाया है।\n\nआपको और आपके परिवार को तीज की शुभकामनाएं!`;
+      }
+
+      // SET preview
+      document.getElementById("greetingText").innerHTML = wish.replace(/\n/g, "<br>");
+
+      // create WhatsApp sharable link
+      let share = `https://wa.me/?text=${encodeURIComponent(wish)}`;
+      document.getElementById("shareLink").textContent = share;
+      document.getElementById("shareLink").href = share;
+      document.getElementById("shareLinkBox").style.display = 'flex';
+    }
+
+    function shareOnWhatsapp(){
+      const link = document.getElementById('shareLink').href;
+      window.open(link, "_blank");
+    }
+  </script>
+</body>
+</html>
